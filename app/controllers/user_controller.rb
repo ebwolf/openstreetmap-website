@@ -27,32 +27,32 @@ class UserController < ApplicationController
       render :update do |page|
         page.replace_html "contributorTerms", :partial => "terms"
       end
-    elsif using_open_id?
-      # The redirect from the OpenID provider reenters here
-      # again and we need to pass the parameters through to
-      # the open_id_authentication function
-      @user = session.delete(:new_user)
+    #elsif using_open_id?
+    #  # The redirect from the OpenID provider reenters here
+    #  # again and we need to pass the parameters through to
+    #  # the open_id_authentication function
+    #  @user = session.delete(:new_user)
 
-      openid_verify(nil, @user) do |user|
-      end
+    #  openid_verify(nil, @user) do |user|
+    #  end
 
-      if @user.openid_url.nil? or @user.invalid?
-        render :action => 'new'
-      else
-        render :action => 'terms'
-      end
+    #  if @user.openid_url.nil? or @user.invalid?
+    #    render :action => 'new'
+    #  else
+    #    render :action => 'terms'
+    #  end
     else
       session[:referer] = params[:referer]
 
       @title = t 'user.terms.title'
       @user = User.new(params[:user]) if params[:user]
-
-      if params[:user] and params[:user][:openid_url] and @user.pass_crypt.empty?
-        # We are creating an account with OpenID and no password
-        # was specified so create a random one
-        @user.pass_crypt = ActiveSupport::SecureRandom.base64(16) 
-        @user.pass_crypt_confirmation = @user.pass_crypt 
-      end
+   
+      #if params[:user] and params[:user][:openid_url] and @user.pass_crypt.empty?
+      #  # We are creating an account with OpenID and no password
+      #  # was specified so create a random one
+      #  @user.pass_crypt = ActiveSupport::SecureRandom.base64(16) 
+      #  @user.pass_crypt_confirmation = @user.pass_crypt 
+      #end
 
       if @user
         if @user.invalid?
@@ -67,10 +67,10 @@ class UserController < ApplicationController
         elsif @user.terms_agreed?
           # Already agreed to terms, so just show settings
           redirect_to :action => :account, :display_name => @user.display_name
-        elsif params[:user] and params[:user][:openid_url] and not params[:user][:openid_url].empty?
-          # Verify OpenID before moving on
-          session[:new_user] = @user
-          openid_verify(params[:user][:openid_url], @user)
+        #elsif params[:user] and params[:user][:openid_url] and not params[:user][:openid_url].empty?
+        #  # Verify OpenID before moving on
+        #  session[:new_user] = @user
+        #  openid_verify(params[:user][:openid_url], @user)
         end
       else
         # Not logged in, so redirect to the login page
@@ -88,21 +88,16 @@ class UserController < ApplicationController
       if @user
         @user.terms_seen = true
 
-        if @user.save
-          flash[:notice] = t 'user.new.terms declined', :url => t('user.new.terms declined url')
-        end
-
         if params[:referer]
           redirect_to params[:referer]
         else
           redirect_to :action => :account, :display_name => @user.display_name
         end
-      else
-        redirect_to t('user.terms.declined')
       end
     elsif @user
       if !@user.terms_agreed?
-        @user.consider_pd = params[:user][:consider_pd]
+        @user.consider_pd = true
+        #@user.consider_pd = params[:user][:consider_pd]
         @user.terms_agreed = Time.now.getutc
         @user.terms_seen = true
         if @user.save
@@ -162,32 +157,32 @@ class UserController < ApplicationController
       @user.home_lat = params[:user][:home_lat]
       @user.home_lon = params[:user][:home_lon]
 
-      if params[:user][:preferred_editor] == "default"
+      #if params[:user][:preferred_editor] == "default"
         @user.preferred_editor = nil
-      else
-        @user.preferred_editor = params[:user][:preferred_editor]
-      end
+      #else
+      #  @user.preferred_editor = params[:user][:preferred_editor]
+      #end
 
-      @user.openid_url = nil if params[:user][:openid_url].empty?
+      @user.openid_url = nil # if params[:user][:openid_url].empty?
 
-      if params[:user][:openid_url].length > 0 and
-         params[:user][:openid_url] != @user.openid_url
-        # If the OpenID has changed, we want to check that it is a
-        # valid OpenID and one the user has control over before saving
-        # it as a password equivalent for the user.
-        session[:new_user] = @user
-        openid_verify(params[:user][:openid_url], @user)
-      else
+      #if params[:user][:openid_url].length > 0 and
+      #   params[:user][:openid_url] != @user.openid_url
+      #  # If the OpenID has changed, we want to check that it is a
+      #  # valid OpenID and one the user has control over before saving
+      #  # it as a password equivalent for the user.
+      #  session[:new_user] = @user
+      #  openid_verify(params[:user][:openid_url], @user)
+      #else
         update_user(@user)
-      end
-    elsif using_open_id?
-      # The redirect from the OpenID provider reenters here
-      # again and we need to pass the parameters through to
-      # the open_id_authentication function
-      @user = session.delete(:new_user)
-      openid_verify(nil, @user) do |user|
-        update_user(user)
-      end
+      #end
+    #elsif using_open_id?
+    #  # The redirect from the OpenID provider reenters here
+    #  # again and we need to pass the parameters through to
+    #  # the open_id_authentication function
+    #  @user = session.delete(:new_user)
+    #  openid_verify(nil, @user) do |user|
+    #    update_user(user)
+    #  end
     else
       if flash[:errors]
         flash[:errors].each do |attr,msg|
@@ -258,8 +253,8 @@ class UserController < ApplicationController
       # The user is logged in already, so don't show them the signup
       # page, instead send them to the home page
       redirect_to :controller => 'site', :action => 'index'
-    elsif not params['openid'].nil?
-      flash.now[:notice] = t 'user.new.openid association'
+    #elsif not params['openid'].nil?
+    #  flash.now[:notice] = t 'user.new.openid association'
     end
   end
 
@@ -268,13 +263,7 @@ class UserController < ApplicationController
       session[:remember_me] ||= params[:remember_me]
       session[:referer] ||= params[:referer]
 
-      if using_open_id?
-        openid_authentication(params[:openid_url])
-      else
-        password_authentication(params[:username], params[:password])
-      end
-    elsif flash[:notice].nil?
-      flash.now[:notice] =  t 'user.login.notice'
+      password_authentication(params[:username], params[:password])
     end
   end
 
@@ -499,7 +488,7 @@ private
     elsif user = User.authenticate(:username => username, :password => password, :pending => true)
       failed_login t('user.login.account not active', :reconfirm => url_for(:action => 'confirm_resend', :display_name => user.display_name))
     elsif User.authenticate(:username => username, :password => password, :suspended => true)
-      webmaster = link_to t('user.login.webmaster'), "mailto:webmaster@openstreetmap.org"
+      webmaster = link_to t('user.login.webmaster'), "mailto:gdmatthews@usgs.gov"
       failed_login t('user.login.account suspended', :webmaster => webmaster)
     else
       failed_login t('user.login.auth failure')
