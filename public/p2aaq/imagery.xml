@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<imagery>
+	<set>
+		<name>Quad Index</name>
+		<type>900913</type>
+		<url>http://navigator.er.usgs.gov/tiles/tilecache.cgi/1.0.0/idx/$z/$x/$y</url>
+	</set>
+	<set>
+		<name>Aerial Imagery</name>
+		<type>900913</type>
+		<url>http://navigator.er.usgs.gov/tiles/tilecache.cgi/1.0.0/naip/$z/$x/$y</url>
+	</set>
+	<set>
+		<name>The National Map</name>
+		<type>900913</type>
+		<url>http://navigator.er.usgs.gov/tiles/tilecache.cgi/1.0.0/tnm/$z/$x/$y</url>
+	</set>
+	<set>
+		<name>Classic Topos</name>
+		<type>900913</type>
+		<url>http://navigator.er.usgs.gov/tiles/tilecache.cgi/1.0.0/drg/$z/$x/$y</url>
+	</set>
+</imagery>

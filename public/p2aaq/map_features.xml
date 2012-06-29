@@ -1,0 +1,643 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Quick documentation:
+
+<category> the categories that features belong to. This includes both nodes (icons on left) and ways/areas (drop-down list that appears when a way/area is selected)
+  name: Shown in GUI
+  id: internal reference (a feature refers to this with category=xxx)
+
+<feature> a pre-defined group of tags that make up a feature
+  category: [ctext] corresponding to category id
+  icon
+    @image: path to .png file
+    @background: colour spec
+    @foreground: colour spec
+    (general html goes here?) Variables substituted with ${ref}
+  help: [ctext] URL, shown as a linked ? icon. Should (?) usually be an OSM wiki page.
+  description: Not currently used?
+  line/point/area: any or all of these are allowed. Determines whether this feature is shown in the corresponding situations. None is equivalent to all three.
+  tag - one or more of these required, defines the tags that make up the feature.
+    @k - key
+    @v - value
+  input
+    @ref=xxx
+  inputSet
+    @ref=xxx
+</feature>
+
+<inputSet>: a reusable group of properties for a feature.
+  @id="internal id"
+  input...
+</inputSet>
+
+<input>
+  @type: choice/freetext/turn/checkbox/slider/route/speed/number - the different types of supported input dialogs.
+  @presence: always/onTagMatch/withCategory - Whether it always appears on the basic page, appears only when the tag is already set, or only ever show on the category page.
+  @category: which tab it appears on
+  @description: mouse-over text
+  @name: The text shown as the label of the property
+  @key: The actual OSM key (tag) that will be saved
+  @priority: highest/high/normal/low/lowest (default=>normal) - controls the order that different features show up in a panel.
+  match: for turn|route inputs, the tags to be considered on the relation as indicating a match.
+    @k: key
+    @v: value
+  icon: see above
+-->
+
+<mapFeatures>
+
+  <!-- Categories -->
+
+  <category name="Commercial and Retail" id="commercial">
+  </category>
+
+  <category name="Education" id="education">
+  </category>
+
+  <category name="Emergency Response and Law Enforcement" id="emergency">
+  </category>
+
+  <category name="Government and Military" id="government">
+  </category>
+
+  <category name="Health and Medical" id="health">
+  </category>
+
+  <category name="Mail and Shipping" id="mail">
+  </category>
+
+  <category name="Public Attractions and Landmark Buildings" id="publicattractions">
+  </category>
+
+  <category name="Roads" id="roads">
+  </category>
+
+  <category name="Paths" id="paths">
+  </category>
+
+  <category name="ShoppingTEST" id="shopping">
+  </category>
+
+  <category name="Food and Drink" id="foodanddrink">
+  </category>
+
+  <category name="Amenity" id="amenity">
+  </category>
+
+  <category name="Tourism" id="tourism">
+  </category>
+
+  <category name="Accommodation" id="accommodation">
+  </category>
+
+  <category name="Transport" id="transport">
+  </category>
+
+  <category name="Water" id="water">
+  </category>
+
+  <category name="Natural" id="natural">
+  </category>
+
+  <category name="Barrier" id="barrier">
+  </category>
+
+  <category name="Power" id="power">
+  </category>
+
+  <category name="Admin" id="admin">
+  </category>
+
+  <category name="Buildings" id="buildings">
+  </category>
+
+  <category name="Landuse" id="landuse">
+  </category>
+
+  <category name="Agriculture" id="agriculture">
+  </category>
+
+  <category name="Advanced" id="advanced">
+  </category>
+
+  <category name="Places" id="places">
+  </category>
+
+  <!--USGS input sets-->
+  <inputSet id="basic">
+    <!--Name-->
+    <input type="freetext" presence="always"  priority="high"   name="Name"   key="Name"  description="The most common name"/>
+
+    <input type="checkbox" presence="always" name="Finished Editing" key="Status" />
+  </inputSet>
+
+
+  <inputSet id="optional">
+  
+	<!--Address-->
+	<input type="freetext"  category="Optional" presence="withCategory" priority="normal" name="Address (Physical)" key="Address" description="Street Address" />
+	
+	<!--City-->
+	<input type="freetext"  category="Optional" presence="withCategory" priority="normal" name="City" key="City" description="City name" />
+	
+	<!--State-->
+	<input type="choice" category="Optional"  presence="withCategory" priority="normal" name="State" key="State" description="State" >
+      <choice value="CO" text="CO" />
+    </input>
+	
+	<!--Zip Code-->
+	<input type="freetext" category="Optional" presence="withCategory" priority="normal" name="Zip Code" key="Zipcode" />
+	
+    <!--Attribute Source-->
+    <input type="choice" category="Optional" presence="withCategory" priority="low" name="Attribute Source" key="AttributeSource" description="Source used to locate feature">
+      <choice value="1" text="Authoritative Website" />
+      <choice value="2" text="Visual Confirmation" />
+      <choice value="3" text="Personal Contact" />
+      <choice value="4" text="Other--Add Comments" />
+    </input> 
+    <input type="freetext" category="Optional" presence="withCategory" priority="low" name="Attribute Source Comments" key="AttributeSourceComments" />
+ 
+  </inputSet>
+
+<!-- ========================================= -->
+<!-- ============USGS Structures============== -->
+
+ <!-- ============= Education ============ -->
+  <feature name="School">
+    <category>education</category>
+    <icon image="usgs/school.png">
+      ${name}
+    </icon>
+    <help>http://nationalmap.gov/structures.html</help>
+    <point/>
+
+    <tag k="FCode" v="73002"/>
+
+    <inputSet ref="basic"  />
+    <inputSet ref="optional" category="Optional" />
+
+  </feature>
+
+  <!--<feature name="School: Elementary">
+    <category>education</category>
+    <icon image="usgs/elementary_school.png">
+      ${name}
+    </icon>
+    <help>http://nationalmap.gov/structures.html</help>
+    <point/>
+
+    <tag k="FCode" v="73003"/>
+ 
+    <inputSet ref="basic"  />
+    <inputSet ref="optional" category="Optional" />
+
+
+
+  </feature>-->
+
+  <!--<feature name="School: Middle School">
+    <category>education</category>
+    <icon image="usgs/middle_school.png">
+      ${name}
+    </icon>
+    <help>http://nationalmap.gov/structures.html</help>
+    <point/>
+
+    <tag k="FCode" v="73004"/>
+ 
+    <inputSet ref="status" category="QC" />
+    <inputSet ref="basic"  />
+    <inputSet ref="optional" category="Optional" />
+
+
+
+  </feature>-->
+
+  <!--<feature name="School: High School">
+    <category>education</category>
+    <icon image="usgs/high_school.png">
+      ${name}
+    </icon>
+    <help>http://nationalmap.gov/structures.html</help>
+    <point/>
+
+    <tag k="FCode" v="73005"/>
+
+    <inputSet ref="status" category="QC" />
+    <inputSet ref="basic"  />
+    <inputSet ref="optional" category="Optional" />
+
+
+  </feature>-->
+
+  <feature name="College/University">
+    <category>education</category>
+    <icon image="usgs/college_university.png">
+      ${name}
+    </icon>
+    <help>http://nationalmap.gov/structures.html</help>
+    <point/>
+
+    <tag k="FCode" v="73006"/>
+
+    <inputSet ref="basic"  />
+    <inputSet ref="optional" category="Optional" />
+
+
+  </feature>
+
+  <!--================== Emergency Response & Law Enforcement ============ -->
+
+  <feature name="Fire Station/EMS Station">
+    <category>emergency</category>
+    <icon image="usgs/firestation_ems.png">
+      ${name}
+    </icon>
+    <help>http://nationalmap.gov/structures.html</help>
+    <point/>
+
+    <tag k="FCode" v="74026" />
+
+    <inputSet ref="basic"  />
+    <inputSet ref="optional" category="Optional" />
+
+
+  </feature>
+
+  <feature name="Law Enforcement">
+    <category>emergency</category>
+    <icon image="usgs/law_enforcement.png">
+      ${name}
+    </icon>
+    <help>http://nationalmap.gov/structures.html</help>
+    <point/>
+
+    <tag k="FCode" v="74034" />
+
+    <inputSet ref="basic"  />
+    <inputSet ref="optional" category="Optional" />
+
+
+
+  </feature>
+
+  <feature name="Prison / Correctional Facility">
+    <category>emergency</category>
+    <icon image="usgs/prison_correctionalfacility.png">
+      ${name}
+    </icon>
+    <help>http://nationalmap.gov/structures.html</help>
+    <point/>
+
+    <tag k="FCode" v="74036"/>
+
+    <inputSet ref="basic"  />
+    <inputSet ref="optional" category="Optional" />
+
+
+  </feature>
+
+  <!--=========== Government and Military =================-->
+  <feature name="State Capitol">
+    <category>government</category>
+    <icon image="usgs/state_capitol.png">
+      ${name}
+    </icon>
+    <help>http://nationalmap.gov/structures.html</help>
+    <point/>
+
+    <tag k="FCode" v="83006"/>
+
+    <inputSet ref="basic"  />
+    <inputSet ref="optional" category="Optional" />
+
+
+  </feature>
+
+  <feature name="Court House">
+    <category>government</category>
+    <icon image="usgs/courthouse2.png">
+      ${name}
+    </icon>
+    <help>http://nationalmap.gov/structures.html</help>
+    <point/>
+
+    <tag k="FCode" v="83011"/>
+
+    <inputSet ref="basic"  />
+    <inputSet ref="optional" category="Optional" />
+
+
+  </feature>
+
+  <feature name="City/Town Hall">
+    <category>government</category>
+    <icon image="usgs/city_townhall.png">
+      ${name}
+    </icon>
+    <help>http://nationalmap.gov/structures.html</help>
+    <point/>
+
+    <tag k="FCode" v="83044"/>
+
+    <inputSet ref="basic"  />
+    <inputSet ref="optional" category="Optional" />
+
+
+  </feature>
+
+<!--Health and Medical-->
+  <feature name="Hospital / Medical Center">
+    <category>health</category>
+    <icon image="usgs/hospital_medicalcenter.png">
+      ${name}
+    </icon>
+    <help>http://nationalmap.gov/structures.html</help>
+    <point/>
+
+    <tag k="FCode" v="80012"/>
+
+    <inputSet ref="basic"  />
+    <inputSet ref="optional" category="Optional" />
+ 
+  </feature>
+
+<!--Mail and Shipping-->
+  <feature name="Post Office">
+    <category>mail</category>
+    <icon image="usgs/postoffice.png">
+      ${name}
+    </icon>
+    <help>http://nationalmap.gov/structures.html</help>
+    <point/>
+
+    <tag k="FCode" v="78006"/>
+
+    <inputSet ref="basic"  />
+    <inputSet ref="optional" category="Optional" />
+
+  </feature>
+
+<!--Public Attractions and Landmark Buildings-->
+  <!--<feature name="Amusement / Water Park">
+    <category>publicattractions</category>
+    <icon image="usgs/amusement_waterpark.png">
+      ${name}
+    </icon>
+    <help>http://nationalmap.gov/structures.html</help>
+    <point/>
+
+    <tag k="FCode" v="82002"/>
+
+    <inputSet ref="basic"  />
+    <inputSet ref="optional" category="Optional" />
+
+  </feature>-->
+
+  <feature name="Auditorium / Concert Hall / Theater / Opera House">
+    <category>publicattractions</category>
+    <icon image="usgs/auditorium_concerthall_theater_operahouse.png">
+      ${name}
+    </icon>
+    <help>http://nationalmap.gov/structures.html</help>
+    <point/>
+
+    <tag k="FCode" v="82006"/>
+
+    <inputSet ref="basic"  />
+    <inputSet ref="optional" category="Optional" />
+ 
+  </feature>
+
+  <feature name="Campground">
+    <category>publicattractions</category>
+    <icon image="usgs/campgroundv2.png">
+      ${name}
+    </icon>
+    <help>http://nationalmap.gov/structures.html</help>
+    <point/>
+
+    <tag k="FCode" v="82008"/>
+
+    <inputSet ref="basic"  />
+    <inputSet ref="optional" category="Optional" />
+
+  </feature>
+
+  <feature name="Cemetery">
+    <category>publicattractions</category>
+    <icon image="usgs/cemetery.png">
+      ${name}
+    </icon>
+    <help>http://nationalmap.gov/structures.html</help>
+    <point/>
+
+    <tag k="FCode" v="82010"/>
+
+    <inputSet ref="basic"  />
+    <inputSet ref="optional" category="Optional" />
+
+  </feature>
+
+  <feature name="Convention Center">
+    <category>publicattractions</category>
+    <icon image="usgs/convention_center.png">
+      ${name}
+    </icon>
+    <help>http://nationalmap.gov/structures.html</help>
+    <point/>
+
+    <tag k="FCode" v="82012"/>
+
+    <inputSet ref="basic"  />
+    <inputSet ref="optional" category="Optional" />
+
+  </feature>
+
+  <feature name="Fair / Exhibition / Rodeo Grounds">
+    <category>publicattractions</category>
+    <icon image="usgs/Fair_exhibition_rodeogrounds.png">
+      ${name}
+    </icon>
+    <help>http://nationalmap.gov/structures.html</help>
+    <point/>
+
+    <tag k="FCode" v="82014"/>
+
+    <inputSet ref="basic"  />
+    <inputSet ref="optional" category="Optional" />
+ 
+  </feature>
+
+  <feature name="Historic Site / Point of Interest">
+    <category>publicattractions</category>
+    <icon image="usgs/historicsite_pointofinterest.png">
+      ${name}
+    </icon>
+    <help>http://nationalmap.gov/structures.html</help>
+    <point/>
+
+    <tag k="FCode" v="82018"/>
+
+    <inputSet ref="basic"  />
+    <inputSet ref="optional" category="Optional" />
+
+  </feature>
+
+  <!--<feature name="House of Worship">
+    <category>publicattractions</category>
+    <icon image="usgs/place_of_worship.png">
+      ${name}
+    </icon>
+    <help>http://nationalmap.gov/structures.html</help>
+    <point/>
+
+    <tag k="FCode" v="82020"/>
+
+    <inputSet ref="basic"  />
+    <inputSet ref="optional" category="Optional" />
+
+  </feature>-->
+
+  <!--<feature name="Ice Arena">
+    <category>publicattractions</category>
+    <icon image="usgs/ice_arena.png">
+      ${name}
+    </icon>
+    <help>http://nationalmap.gov/structures.html</help>
+    <point/>
+
+    <tag k="FCode" v="82022"/>
+
+    <inputSet ref="basic"  />
+    <inputSet ref="optional" category="Optional" />
+
+  </feature>-->
+
+  <feature name="Library">
+    <category>publicattractions</category>
+    <icon image="usgs/library.png">
+      ${name}
+    </icon>
+    <help>http://nationalmap.gov/structures.html</help>
+    <point/>
+
+    <tag k="FCode" v="82024"/>
+
+    <inputSet ref="basic"  />
+    <inputSet ref="optional" category="Optional" />
+ 
+  </feature>
+
+  <!--<feature name="Lighthouse / Light">
+    <category>publicattractions</category>
+    <icon image="usgs/lighthouse.png">
+      ${name}
+    </icon>
+    <help>http://nationalmap.gov/structures.html</help>
+    <point/>
+
+    <tag k="FCode" v="82026"/>
+
+    <inputSet ref="basic"  />
+    <inputSet ref="optional" category="Optional" />
+
+  </feature>-->
+
+
+  <feature name="Museum">
+    <category>publicattractions</category>
+    <icon image="usgs/museum.png">
+      ${name}
+    </icon>
+    <help>http://nationalmap.gov/structures.html</help>
+    <point/>
+
+    <tag k="FCode" v="82032"/>
+
+    <inputSet ref="basic"  />
+    <inputSet ref="optional" category="Optional" />
+
+  </feature>
+
+  <feature name="National Symbol / Monument">
+    <category>publicattractions</category>
+    <icon image="usgs/nationalsymbol_monument.png">
+      ${name}
+    </icon>
+    <help>http://nationalmap.gov/structures.html</help>
+    <point/>
+
+    <tag k="FCode" v="82034"/>
+
+    <inputSet ref="basic"  />
+    <inputSet ref="optional" category="Optional" />
+
+  </feature>
+
+  <!--<feature name="Outdoor Theater / Amphitheater">
+    <category>publicattractions</category>
+    <icon image="usgs/outdoorauditorium_amphitheater.png">
+      ${name}
+    </icon>
+    <help>http://nationalmap.gov/structures.html</help>
+    <point/>
+
+    <tag k="FCode" v="82038"/>
+
+    <inputSet ref="basic"  />
+    <inputSet ref="optional" category="Optional" />
+
+  </feature>-->
+
+  <!--<feature name="Racetrack / Dragstrip">
+    <category>publicattractions</category>
+    <icon image="usgs/racetrack_dragstrip.png">
+      ${name}
+    </icon>
+    <help>http://nationalmap.gov/structures.html</help>
+    <point/>
+
+    <tag k="FCode" v="82042"/>
+
+    <inputSet ref="basic"  />
+    <inputSet ref="optional" category="Optional" />
+
+  </feature>-->
+
+  <feature name="Sports Arena / Stadium">
+    <category>publicattractions</category>
+    <icon image="usgs/sportsarena_stadium.png">
+      ${name}
+    </icon>
+    <help>http://nationalmap.gov/structures.html</help>
+    <point/>
+
+    <tag k="FCode" v="82046"/>
+
+    <inputSet ref="basic"  />
+    <inputSet ref="optional" category="Optional" />
+
+  </feature>
+
+  <!--<feature name="Zoo">
+    <category>publicattractions</category>
+    <icon image="usgs/zoo.png">
+      ${name}
+    </icon>
+    <help>http://nationalmap.gov/structures.html</help>
+    <point/>
+
+    <tag k="FCode" v="82050"/>
+
+    <inputSet ref="basic"  />
+    <inputSet ref="optional" category="Optional" />
+
+  </feature>-->
+
+
+  <!-- ========================================== -->
+  <!-- ==========end USGS Structures============= -->
+
+
+</mapFeatures>
