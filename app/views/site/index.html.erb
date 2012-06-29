@@ -5,7 +5,6 @@
 <% end %>
 
 <%= render :partial => 'sidebar', :locals => { :onopen => "resizeMap();", :onclose => "resizeMap();" } %>
-<%= render :partial => 'key' %>
 <%= render :partial => 'search' %>
 
 <noscript>
@@ -25,22 +24,6 @@
 
 <iframe id="linkloader" style="display: none">
 </iframe>
-
-<div id="attribution">
-  <table width="100%">
-    <tr>
-      <td class="attribution_license"><%= t'site.index.license.license_url' %></td>
-      <td class="attribution_project"><%= t'site.index.license.project_url' %></td>
-    </tr>
-    <tr>
-      <td colspan="2" class="attribution_notice"><%=
-        t'site.index.license.notice',
-          :license_name => t('site.index.license.license_name'),
-          :project_name => t('site.index.license.project_name')
-        %></td>
-    </tr>
-  </table>
-</div>
 
 <%
 if params['mlon'] and params['mlat']
@@ -111,9 +94,9 @@ else
         maxlon = session[:location][:maxlon]
         maxlat = session[:location][:maxlat]
     else
-        lon =  '-0.1'
-        lat =  '51.5'
-        zoom =  h(params['zoom'] || '5')
+        lon =  '-104.875'
+        lat =  '39.75'
+        zoom =  h(params['zoom'] || '11')
     end
 
     layers = h(params['layers'])
@@ -140,6 +123,7 @@ end
       map.dataLayer.events.register("visibilitychanged", map.dataLayer, toggleData);
       map.addLayer(map.dataLayer);
     <% end %>
+
 
     <% unless object_zoom %>
       <% if bbox %>
@@ -279,8 +263,4 @@ end
 
     map.setCenter(centre, zoom);
   });
-
-  <% if params['action'] == 'export' %>
-  <%= remote_function :url => { :controller => 'export', :action => 'start' } %>
-  <% end %>
 </script>
