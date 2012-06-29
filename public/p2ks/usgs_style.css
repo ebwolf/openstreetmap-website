@@ -1,0 +1,141 @@
+/*
+
+	Style for USGS VGI Structures Project
+
+	Kevin McNinch
+	klmcninch@usgs.gov
+
+	Created 12/20/2010
+	
+*/
+
+
+
+/*==========================
+       USGS Structures
+==========================*/
+
+
+/*=====Education=====*/
+/*= School =*/
+node[FCode=73002] { icon-image: usgs/school.png; z-index: 20; }
+/*= School: Elementary =*/
+node[FCode=73003] { icon-image: usgs/elementary_school.png; z-index: 20; }
+/*= School: Middle School =*/
+node[FCode=73004] { icon-image: usgs/middle_school.png; z-index: 20; }
+/*= School: High School =*/
+node[FCode=73005] { icon-image: usgs/high_school.png; z-index: 20; }
+/*= College / University =*/
+node[FCode=73006] { icon-image: usgs/college_university.png; z-index: 20; }
+
+/*===== Emergency Response and Law Enforcement =====*/
+/* Fire Station/EMS Station */
+node[FCode=74026] { icon-image: usgs/firestation_ems.png; z-index: 20; }
+/* Law Enforcement */
+node[FCode=74034] { icon-image: usgs/law_enforcement.png; z-index: 20; }
+/* Prison/Correctional Facility */
+node[FCode=74036] { icon-image: usgs/prison_correctionalfacility.png; z-index: 20; }
+
+/*===== Government and Military =====*/
+/*= State Capitol = */
+node[FCode=83006] { icon-image: usgs/state_capitol.png; z-index: 20; }
+/*= Court House =*/
+node[FCode=83011] { icon-image: usgs/courthouse2.png; z-index: 20; }
+/*= City / Town Hall =*/
+node[FCode=83044] { icon-image: usgs/city_townhall.png; z-index: 20; }
+
+
+/*===== Health and Medical =====*/
+/*= Hospital / Medical Center =*/
+node[FCode=80012] { icon-image: usgs/hospital_medicalcenter.png; z-index: 20; }
+
+/*===== Mail and Shipping =====*/
+/*= Post Office =*/
+node[FCode=78006] { icon-image: usgs/postoffice.png; z-index: 20; }
+
+/*===== Public Attractions and Landmark Buildings =====*/
+/*= Amusement/Water Park =*/
+node[FCode=82002] { icon-image: usgs/amusement_waterpark.png; z-index: 20; }
+/*= Auditorium / Convert Hall / Theater / Opera House =*/
+node[FCode=82006] { icon-image: usgs/auditorium_concerthall_theater_operahouse.png; z-index: 20; }
+/*= Campground =*/
+node[FCode=82008] { icon-image: usgs/campgroundv2.png; z-index: 20; }
+/*= Cemetery =*/
+node[FCode=82010] { icon-image: usgs/cemetery.png; z-index: 20; }
+/*= Convention Center =*/
+node[FCode=82012] { icon-image: usgs/convention_center.png; z-index: 20; }
+/*= Fair / Exhibition / Rodeo Grounds =*/
+node[FCode=82014] { icon-image: usgs/Fair_exhibition_rodeogrounds.png; z-index: 20; }
+/*= Historic Site / Point of Interest =*/
+node[FCode=82018] { icon-image: usgs/historicsite_pointofinterest.png; z-index: 20; }
+/*= House of Worship =*/
+node[FCode=82020] { icon-image: usgs/place_of_worship.png; z-index: 20; }
+/*= Ice Arena =*/
+node[FCode=82022] { icon-image: usgs/ice_arena.png; z-index: 20; }
+/*= Library =*/
+node[FCode=82024] { icon-image: usgs/library.png; z-index: 20; }
+/*= Lighthouse / Light =*/
+node[FCode=82026] { icon-image: usgs/lighthouse.png; z-index: 20; }
+/*= Museum =*/
+node[FCode=82032] { icon-image: usgs/museum.png; z-index: 20; }
+/*= National Symbol/Mounment =*/
+node[FCode=82034] { icon-image: usgs/nationalsymbol_monument.png; z-index: 20; }
+/*= Outdoor Theater / Amphitheater =*/
+node[FCode=82038] { icon-image: usgs/outdoorauditorium_amphitheater.png; z-index: 20; }
+/*= Racetrack/Dragstrip =*/
+node[FCode=82042] { icon-image: usgs/racetrack_dragstrip.png; z-index: 20; }
+/*= Sports Arena/Stadium =*/
+node[FCode=82046] { icon-image: usgs/sportsarena_stadium.png; z-index: 20; }
+/*= Zoo =*/
+node[FCode=82050] { icon-image: usgs/zoo.png; z-index: 20; }
+
+
+/*=====Draw status of structure under the structure icon=====*/
+node[Status=GAZ][FCode=73002] { icon-image: usgs/red28.png; z-index: 19; }
+node[Status=GAZ][FCode=82050] { icon-image: usgs/red28.png; z-index: 19; }
+node[Status=GAZ][FCode=82046] { icon-image: usgs/red28.png; z-index: 19; }
+node[Status=GAZ][FCode=82038] { icon-image: usgs/red28.png; z-index: 19; }
+node[Status=GAZ][FCode=82034] { icon-image: usgs/red28.png; z-index: 19; }
+node[Status=GAZ][FCode=82032] { icon-image: usgs/red28.png; z-index: 19; }
+node[Status=GAZ][FCode=82026] { icon-image: usgs/red28.png; z-index: 19; }
+node[Status=GAZ][FCode=82024] { icon-image: usgs/red28.png; z-index: 19; }
+node[Status=GAZ][FCode=82022] { icon-image: usgs/red28.png; z-index: 19; }
+node[Status=GAZ][FCode=82020] { icon-image: usgs/red28.png; z-index: 19; }
+node[Status=GAZ][FCode=82018] { icon-image: usgs/red28.png; z-index: 19; }
+node[Status=GAZ][FCode=82014] { icon-image: usgs/red28.png; z-index: 19; }
+node[Status=GAZ][FCode=82012] { icon-image: usgs/red28.png; z-index: 19; }
+node[Status=GAZ][FCode=82010] { icon-image: usgs/red28.png; z-index: 19; }
+node[Status=GAZ][FCode=82008] { icon-image: usgs/red28.png; z-index: 19; }
+node[Status=GAZ][FCode=82006] { icon-image: usgs/red28.png; z-index: 19; }
+node[Status=GAZ][FCode=80012] { icon-image: usgs/red28.png; z-index: 19; }
+node[Status=GAZ][FCode=83044] { icon-image: usgs/red28.png; z-index: 19; }
+node[Status=GAZ][FCode=83011] { icon-image: usgs/red28.png; z-index: 19; }
+node[Status=GAZ][FCode=83006] { icon-image: usgs/red28.png; z-index: 19; }
+node[Status=GAZ][FCode=74036] { icon-image: usgs/red28.png; z-index: 19; }
+node[Status=GAZ][FCode=74034] { icon-image: usgs/red28.png; z-index: 19; }
+node[Status=GAZ][FCode=74026] { icon-image: usgs/red28.png; z-index: 19; }
+node[Status=GAZ][FCode=73006] { icon-image: usgs/red28.png; z-index: 19; }
+node[Status=GAZ][FCode=73005] { icon-image: usgs/red28.png; z-index: 19; }
+node[Status=GAZ][FCode=73004] { icon-image: usgs/red28.png; z-index: 19; }
+node[Status=GAZ][FCode=73003] { icon-image: usgs/red28.png; z-index: 19; }
+node[Status=GAZ][FCode=73002] { icon-image: usgs/red28.png; z-index: 19; }
+node[Status=GAZ][FCode=78006] { icon-image: usgs/red28.png; z-index: 19; }
+node[Status=EDIT]{ icon-image: usgs/yellow28.png; z-index: 19; }
+node[Status=QC1] { icon-image: usgs/green28.png; z-index: 19; }
+node[Status=QC2] { icon-image: usgs/onepixeltransparent.png; z-index: 19; }
+/*QC2 has no halo*/
+node [Status!=QC2]:drawn :poi {  z-index: 2; icon-image: usgs/purple28.png; }
+
+/*draw Structures and GNIS points that did not match the categories for structures.*/
+node !:drawn :poi { z-index: 2; icon-image: circle; icon-width: 4; color: green; casing-color: black; casing-width: 1; }
+
+/*draw selected node*/
+node :selected { z-index: 1; icon-image: square; icon-width: eval('_width+10'); color: cyan; interactive: no; }
+
+/*============================
+      End USGS Structures
+============================*/
+
+
+
+

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<imagery>
+	<set>
+		<name>Denver Reference Map</name>
+		<type>900913</type>
+		<url>http://navigator.er.usgs.gov/tiles/tilecache.cgi/1.0.0/ref/$z/$x/$y</url>
+	</set>
+	<set>
+		<name>Aerial Imagery</name>
+		<type>900913</type>
+		<url>http://navigator.er.usgs.gov/tiles/tilecache.cgi/1.0.0/naip/$z/$x/$y</url>
+	</set>
+	<set>
+		<name>TNM Large Scale</name>
+		<type>900913</type>
+		<url>http://navigator.er.usgs.gov/tiles/tilecache.cgi/1.0.0/tnm/$z/$x/$y</url>
+	</set>
+	<set>
+		<name>TNM Small Scale</name>
+		<type>900913</type>
+		<url>http://basemap.nationalmap.gov/ArcGIS/rest/services/TNM_Vector_Small/MapServer/tile/$z/$y/$x</url>
+	</set>
+	<set>
+		<name>Classic Topos</name>
+		<type>900913</type>
+		<url>http://navigator.er.usgs.gov/tiles/tilecache.cgi/1.0.0/drg/$z/$x/$y</url>
+	</set>
+</imagery>
