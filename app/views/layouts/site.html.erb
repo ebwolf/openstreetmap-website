@@ -1,15 +1,47 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<%= I18n.locale %>" lang="<%= I18n.locale %>" dir="<%= t'html.dir' %>">
   <%= render :partial => "layouts/head" %>
+
   <body>
-    <div id="small-title">
-      <%= link_to(image_tag("osm_logo.png", :size => "16x16", :border => 0, :alt => t('layouts.logo.alt_text')), :controller => 'site', :action => 'index') %>
-      <h1><%= t 'layouts.project_name.h1' %></h1>
+     <div id="header">
+       <img border="0" alt="USGS Banner" src="/images/36_tall_banner.jpg" usemap="#usgsMap" >
+       <map name="usgsMap">
+         <area shape="rect" coords="0,0,130,36" href="http://www.usgs.gov" target="_blank" alt="USGS - science for a changing world" title="U.S. Geological Survey Home Page"/>
+         <area shape="rect" coords="130,0,220,36" href="http://nationalmap.gov/TheNationalMapCorps/index.html" target="_blank" alt="National Map Logo" title="National Map Corps Page"/>
+       </map>
     </div>
+
+  <div id="stuff">
     <div id="content" class="<%= params[:controller] %>_<%= params[:action] %>">
       <%= render :partial => "layouts/flash", :locals => { :flash => flash } %>
 
       <%= yield %>
+
+      <% if not (params['action'] == 'index' or params['action'] == 'edit') %>
+<!-- BEGIN USGS Footer Template -->
+<div id="usgsfooter">
+	<p id="usgsfooterbar">
+		<a href="http://www.usgs.gov/laws/accessibility.html" title="Accessibility Policy (Section 508)">Accessibility</a>
+		<a href="http://www.usgs.gov/foia/" title="Freedom of Information Act">FOIA</a>
+		<a href="http://www.usgs.gov/laws/privacy.html" title="Privacy policies of the U.S. Geological Survey.">Privacy</a>
+		<a href="http://www.usgs.gov/laws/policies_notices.html" title="Policies and notices that govern information posted on USGS Web sites.">Policies and Notices</a>
+	</p>
+	
+	<p id="usgsfootertext">
+		<a href="http://www.takepride.gov/"><img src="http://www.usgs.gov/images/footer_graphic_takePride.jpg" alt="Take Pride in America logo" title="Take Pride in America Home Page" width="60" height="58" /></a>
+		<a href="http://usa.gov/"><img src="http://www.usgs.gov/images/footer_graphic_usagov.jpg" alt="USA.gov logo" title="USAGov: Government Made Easy" width="90" height="26" /></a>
+		<a href="http://www.doi.gov/">U.S. Department of the Interior</a> |
+		<a href="http://www.usgs.gov/">U.S. Geological Survey</a><br />
+		URL: <em>http://<!--#echo var="SERVER_NAME"--><!--#echo var="DOCUMENT_URI"--></em><br />
+		Page Contact Information: <a href="http://www.usgs.gov/ask/" title="If you have a question or need assistance...">Contact USGS</a><br />
+		Last modified: <!--#echo var="LAST_MODIFIED"-->
+	</p>
+</div>
+<!-- END USGS Footer Template -->
+      <% end %>
+
+
+
     </div>
 
     <span id="greeting">
@@ -17,7 +49,6 @@
         <span id="full-greeting"><%= t 'layouts.welcome_user', :user_link => (link_to h(@user.display_name), {:controller => 'user', :action => 'view', :display_name => @user.display_name}, :title => t('layouts.welcome_user_link_tooltip')) %></span> 
         <span id="small-greeting"><%= link_to t('layouts.welcome_user_link_tooltip'), {:controller => 'user', :action => 'view', :display_name => @user.display_name} %></span> | 
         <%= yield :greeting %>
-        <%= render :partial => "layouts/inbox" %> |
         <%= link_to t('layouts.logout'), {:controller => 'user', :action => 'logout', :session => request.session_options[:id], :referer => request.request_uri}, {:id => 'logoutanchor', :title => t('layouts.logout_tooltip'), :method => :post, :href => url_for(:controller => 'user', :action => 'logout', :referer => request.request_uri)}%>
       <% else %>
         <%= link_to t('layouts.log_in'), {:controller => 'user', :action => 'login', :referer => request.request_uri}, {:id => 'loginanchor', :title => t('layouts.log_in_tooltip')} %> |
@@ -29,112 +60,44 @@
       <ul id="tabnav">
         <%
         viewclass = 'geolink llz layers'
-        editclass = 'geolink llz object minzoom13 disabled'
-        historyclass = 'geolink bbox minzoom11'
-        exportclass = 'geolink llz layers'
-        traceclass = ''
-        diaryclass = ''
         viewclass += ' active' if params['controller'] == 'site' and params['action'] == 'index' 
-        editclass += ' active' if params['controller'] == 'site' and params['action'] == 'edit' 
-        historyclass += ' active' if params['controller'] == 'changeset' and params['action'] == 'list' 
-        exportclass += ' active' if params['controller'] == 'site' and params['action'] == 'export'
-        traceclass += ' active' if params['controller'] == 'trace'
-        diaryclass += ' active' if params['controller'] == 'diary_entry'
+          editclass = 'geolink llz object minzoom13 disabled'
+          editclass += ' active' if params['controller'] == 'site' and params['action'] == 'edit' 
         %>
         <li><%= link_to t('layouts.view'), {:controller => 'site', :action => 'index'}, {:id => 'viewanchor', :title => t('layouts.view_tooltip'), :class => viewclass} %></li>
-        <li><%= link_to t('layouts.edit') + '&nbsp;&#x25be;', {:controller => 'site', :action => 'edit'}, {:id => 'editanchor', :title => t('javascripts.site.edit_tooltip'), :class => editclass} %></li>
-        <li><%= link_to t('layouts.history'), {:controller => 'changeset', :action => 'list' }, {:id => 'historyanchor', :title => t('javascripts.site.history_tooltip'), :class => historyclass} %></li>
-        <% if params['controller'] == 'site' and (params['action'] == 'index' or params['action'] == 'export') %>
-        <li><%= link_to_remote t('layouts.export'), {:url => {:controller => 'export', :action => 'start'}}, {:id => 'exportanchor', :title => t('layouts.export_tooltip'), :class => exportclass, :href => url_for(:controller => 'site', :action => 'export')} %></li>
-        <% else %>
-        <li><%= link_to t('layouts.export'), {:controller => 'site', :action => 'export'}, {:id => 'exportanchor', :title => t('layouts.export_tooltip'), :class => exportclass} %></li>
-        <% end %>
-        <li><%= link_to t('layouts.gps_traces'), {:controller => 'trace', :action => 'list', :display_name => nil, :tag => nil, :page => nil}, {:id => 'traceanchor', :title => t('layouts.gps_traces_tooltip'), :class => traceclass} %></li>
-        <li><%= link_to t('layouts.user_diaries'), {:controller => 'diary_entry', :action => 'list', :display_name => nil}, {:id => 'diaryanchor', :title => t('layouts.user_diaries_tooltip'), :class => diaryclass} %></li>
+        <li><%= link_to t('layouts.edit'), {:controller => 'site', :action => 'edit'}, {:id => 'editanchor', :title => t('javascripts.site.edit_tooltip'), :class => editclass} %></li>
       </ul>
     </div>
-
-    <div id="editmenu" class="menu">
-      <ul>
-        <% Editors::ALL_EDITORS.each do |editor| %>
-          <li><%= link_to t('layouts.edit_with', :editor => t("editor.#{editor}.description")), {:controller => 'site', :action => 'edit', :editor => editor}, {:id => editor + 'anchor', :class => "geolink llz object"} %></li>
-        <% end %>
-      </ul>
-    </div>
-
-    <script type="text/javascript">
-      createMenu("editanchor", "editmenu", 1000, "left");
-    </script>
 
     <div id="left">
-
       <div id="logo">
         <center>
           <h1><%= t 'layouts.project_name.h1' %></h1>
-          <%= link_to(image_tag("osm_logo.png", :size => "120x120", :border => 0, :alt => t('layouts.logo.alt_text')), :controller => 'site', :action => 'index') %><br/>
+          <%= link_to(image_tag("tnm_corps_half.jpg", :size => "144x66", :border => 0, :alt => t('layouts.logo.alt_text')), :controller => 'site', :action => 'index') %><br/>
           <h2 class="nowrap"><%= t('layouts.tag_line') %></h2>
         </center>
       </div>
 
       <%= yield :optionals %>
 
-      <% unless @user %>
-      <div id="intro">
-        <p>
-          <%= t 'layouts.intro_1' %>
-        </p>
-        <p>
-          <%= t 'layouts.intro_2' %>
-        </p>
-        <p>
-        <%= t 'layouts.intro_3', 
-              :ucl => link_to(t('layouts.intro_3_ucl'), "http://www.vr.ucl.ac.uk"),
-              :ic => link_to(t('layouts.intro_3_ic'), "http://www.imperial.ac.uk/"),
-              :bytemark => link_to(t('layouts.intro_3_bytemark'), "http://www.bytemark.co.uk"),
-              :partners => link_to(t('layouts.intro_3_partners'), t('layouts.intro_3_partners_url')) %>
-        </p>
-      </div>
-      <% end %>
-
-      <% if STATUS == :database_offline or STATUS == :api_offline %>
-      <div id="alert">
-        <%= t 'layouts.osm_offline' %>
-      </div>
-      <% elsif STATUS == :database_readonly or STATUS == :api_readonly %>
-      <div id="alert">
-        <%= t 'layouts.osm_read_only' %>
-      </div>
-      <% end %>
-
-      <% if false %>
-      <div id="donate" class="notice">
-        <%= t 'layouts.donate', :link => "<a href=\"http://donate.openstreetmap.org/\">#{t('layouts.donate_link_text')}</a>" %>
-      </div>
-      <% end %>
-
       <div id="left_menu" class="left_menu">
         <ul>
           <li><%= link_to(t('layouts.help_centre'), t('layouts.help_url'), :title => t('layouts.help_title')) %></li>
           <li><%= link_to(t('layouts.documentation'), t('layouts.wiki_url'), :title => t('layouts.documentation_title')) %></li>
-          <li><%= link_to t('layouts.copyright'), {:controller => 'site', :action => 'copyright'} %></li>
-          <li><a href="http://blogs.openstreetmap.org/" title="<%= t 'layouts.community_blogs_title' %>"><%= t 'layouts.community_blogs' %></a></li>
-          <li><a href="http://www.osmfoundation.org" title="<%= t 'layouts.foundation_title' %>"><%= t 'layouts.foundation' %></a></li>
+          <li><%= link_to(t('layouts.foundation'), t('layouts.foundation_url'), :title => t('layouts.foundation_title')) %></li>
           <%= yield :left_menu %>
         </ul>
       </div>
-
-      <div id="sotm">
-        <%= link_to image_tag("sotm.png", :alt => t('layouts.sotm2011'), :title => t('layouts.sotm2011'), :border => "0"), "http://stateofthemap.org/register-now/" %>
-      </div>
-
-      <center>
-        <div class="donate">
-          <a href="http://donate.openstreetmap.org/" title="<%= h(t('layouts.make_a_donation.title')) %>"><%= h(t('layouts.make_a_donation.text')) %></a>
-        </div>
-      </center>
     </div>
-    <% if defined?(PIWIK_LOCATION) and defined?(PIWIK_SITE) -%>
-    <%= render :partial => "layouts/piwik" %>
-    <% end -%>
+  </div>
+
+      <% if params['action'] == 'index' or params['action'] == 'edit' %>
+      <div id="minifooter" style="text-align: right; color: white">
+	<a href="http://www.usgs.gov/accessibility.html" title="Accessibility Policy (Section 508)" class="footerLink">Accessibility</a>&nbsp;|&nbsp;
+	<a href="http://www.usgs.gov/foia" title="Freedom of Information Act" class="footerLink">FOIA</a>&nbsp;|&nbsp;
+	<a href="http://www.usgs.gov/privacy.html" title="Privacy policies of the U.S. Geological Survey" class="footerLink">Privacy</a>&nbsp;|&nbsp;
+	<a href="http://www.usgs.gov/policies_notices.html" title="Policies and notices that govern information posted on USGS Web sites" class="footerLink">Policies and Notices</a>&nbsp;&nbsp;
+      </div>
+      <% end %>
   </body>
 </html>
