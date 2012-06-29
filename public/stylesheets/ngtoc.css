@@ -1,0 +1,110 @@
+/*.index_text {
+	margin-right:150px;
+	margin-left: 10px;
+	}*/
+	
+h3 {
+	margin-bottom:0;
+	display:inline;
+	}
+	
+h2 {
+	margin-bottom:0;
+	display:inline;
+	}
+	
+h5 {
+	margin-bottom:0;
+	display:inline;
+	}
+
+.test {
+	background-color:#C95806;
+	}	
+
+.lowerAlpha {
+	list-style: lower-alpha;
+}
+
+.to {
+margin-left: 50px;
+}
+.from {
+margin-left: 30px;
+}
+
+.from2 {
+margin-left: 72px;
+}
+
+.subject {
+margin-left: 13px;
+}
+
+.table {
+	border: 0px;
+	border-color: #000000;
+}
+
+.xsmall {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: x-small;
+}
+.xsmallbold {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: x-small;
+	font-weight: bold;
+}
+
+.off-left{
+	position: absolute;
+	left: -999px;
+	width: 990px;
+	}
+	
+.blockquote {
+	margin-left: 30px;
+	margin-right: 30px;
+	font-style : italic;
+}
+
+.news {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: x-small;
+}
+.search	{
+	float: right;
+	margin: 0px 10px 0px 0px;
+	padding: 0;
+}
+.clearfloat { /* this class should be placed on a div or break element and should be the final element before the close of a container that should fully contain a float */
+clear:both;
+height:0;
+font-size: 1px;
+line-height: 0px;
+}
+
+#internal {
+		overflow:hidden;
+		float:none;
+		visibility:hidden;
+		width: 0px;
+		height: 0px;
+		padding: 0px;
+		margin: 0px;
+		border: 0px;
+		display: hidden;
+}
+#newsFrame {
+		float: left;
+		width: 100%;
+		height: 615px;
+		margin: 0px;
+		overflow-y: scroll;
+		overflow-x: hidden;
+		visibility:visible;
+		padding: 0px;
+}
+#newsStyle {
+		margin: 5px 10px 5px 10px;
+}
