@@ -39,13 +39,6 @@
       <td><span class="minorNote"><%= t 'user.new.display name description' %></span></td>
     </tr>
 
-    <tr id="openid_spacer"><td colspan="2">&nbsp;<!--vertical spacer--></td></tr>
-
-    <tr id="openid_field">
-      <td class="fieldName"><%= t 'user.new.openid', :logo => openid_logo %></td>
-      <td><%= text_field(:user, :openid_url, { :id => "openid_url", :size => 50, :maxlength => 255, :tabindex => 4, :value => params[:openid], :class => "openid_url" }) %></td>
-    </tr>
-
     <tr><td colspan="2">&nbsp;<!--vertical spacer--></td></tr>
 
     <tr>
@@ -55,13 +48,6 @@
     <tr>
       <td class="fieldName"><%= t 'user.new.confirm password' %></td>
       <td><%= password_field(:user, :pass_crypt_confirmation, { :size => 30, :maxlength => 255, :tabindex => 6 }) %></td>
-    </tr>
-    <tr>
-      <td></td>
-      <td>
-        <span id="openid_prompt" class="minorNote"><%= link_to_function(t('user.new.use openid', :logo => openid_logo), "enableOpenID()") %></span>
-        <span id="openid_note" class="minorNote"><%= t 'user.new.openid no password' %></span>
-      </td>
     </tr>
 
     <tr><td colspan="2" >&nbsp;<!--vertical spacer--></td></tr>
@@ -73,34 +59,5 @@
   </table>
 <% end %>
 
-<script type="text/javascript">
-function enableOpenID()
-{
-  $("openid_prompt").hide();
-
-  $("openid_spacer").show();
-  $("openid_field").show();
-  $("openid_note").show();
-
-  $("openid_url").disabled = false;
-}
-
-function disableOpenID()
-{
-  $("openid_prompt").show();
-
-  $("openid_spacer").hide();
-  $("openid_field").hide();
-  $("openid_note").hide();
-
-  $("openid_url").disabled = true;
-}
-
-<% if params[:openid] or (@user and @user.openid_url and not @user.openid_url.empty?) -%>
-enableOpenID();
-<% else -%>
-disableOpenID();
-<% end -%>
-</script>
 
 <% end %>

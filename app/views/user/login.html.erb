@@ -17,45 +17,6 @@
 
       <br clear="all" />
 
-      <p><%= t 'user.login.with openid' %></p>
-
-      <table id="login_openid_buttons">
-        <tr>
-          <td>
-            <%=
-              link_to_function(image_tag("openid.png", :alt => t("user.login.openid_providers.openid.title")), nil, :title => t("user.login.openid_providers.openid.title")) do |page|
-                page[:login_form][:openid_url].value = "http://"
-                page[:login_openid_buttons].hide
-                page[:login_openid_url].show
-                page[:login_openid_submit].show
-              end
-            %>
-          </td>
-          <td><%= openid_button "google", "gmail.com" %></td>
-          <td><%= openid_button "yahoo", "me.yahoo.com" %></td>
-          <td><%= openid_button "myopenid", "myopenid.com" %></td>
-          <td><%= openid_button "wordpress", "wordpress.com" %></td>
-          <td><%= openid_button "aol", "aol.com" %></td>
-        </tr>
-      </table>
-
-      <table>
-        <tr id="login_openid_url">
-          <td class="fieldName nowrap">
-            <%= t 'user.login.openid', :logo => openid_logo %>
-          </td>
-          <td>
-            <%= text_field_tag("openid_url", "", { :size => 28, :maxlength => 255, :tabindex => 3, :class => "openid_url" }) %>
-            <span class="minorNote">(<a href="<%= t 'user.account.openid.link' %>" target="_new"><%= t 'user.account.openid.link text' %></a>)</span>
-          </td>
-        </tr>
-        <tr>
-          <td class="fieldName nowrap" id="remember_me_label"><label for="remember_me"><%= t 'user.login.remember' %></label></td>
-          <td width="100%"><%= check_box_tag "remember_me", "yes", false, :tabindex => 5 %></td>
-        </tr>
-      </table>
-
-      <%= submit_tag t('user.login.login_button'), :tabindex => 6, :id => "login_openid_submit" %>
     <% end %>
 
     <br clear="all" />
@@ -74,7 +35,5 @@
 
 <%=
   update_page_tag do |page|
-    page[:login_openid_url].hide
-    page[:login_openid_submit].hide
   end
 %>

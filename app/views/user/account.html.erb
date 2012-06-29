@@ -28,40 +28,6 @@
   </tr>
 
   <tr>
-    <td class="fieldName" ><%= t 'user.account.openid.openid' %></td>
-    <td><%= f.text_field :openid_url, {:id => "openid_url", :class => "openid_url"} %> <span class="minorNote">(<a href="<%= t 'user.account.openid.link' %>" target="_new"><%= t 'user.account.openid.link text' %></a>)</span></td>
-  </tr>
-
-  <tr>
-    <td class="fieldName"><%= t 'user.account.public editing.heading' %></td>
-    <td>
-      <% if @user.data_public? %>
-        <%= t 'user.account.public editing.enabled' %> <span class="minorNote">(<a href="<%= t 'user.account.public editing.enabled link' %>" target="_new"><%= t 'user.account.public editing.enabled link text' %></a>)</span>
-      <% else %>
-        <%= t 'user.account.public editing.disabled' %> <span class="minorNote">(<a href="#public"><%= t 'user.account.public editing.disabled link text' %></a>)</span>
-      <% end %>
-    </td>
-  </tr>
-
-  <tr>
-    <td class="fieldName"><%= t 'user.account.contributor terms.heading' %></td>
-    <td>
-      <% if @user.terms_agreed? %>
-        <%= t 'user.account.contributor terms.agreed' %>
-        <span class="minorNote">(<a href="<%= t 'user.account.contributor terms.link' %>" target="_new"><%= t 'user.account.contributor terms.link text' %></a>)</span>
-        <br />
-        <% if @user.consider_pd? %>
-          <%= t 'user.account.contributor terms.agreed_with_pd' %>
-        <% end %>
-      <% else %>
-        <%= t 'user.account.contributor terms.not yet agreed' %> <br />
-
-        <%= link_to t('user.account.contributor terms.review link text'), :controller => 'user', :action => 'terms' %>
-      <% end %>
-    </td>
-  </tr>
-
-  <tr>
     <td class="fieldName"><%= t 'user.account.profile description' %></td>
     <td><%= f.text_area :description, :rows => '5', :cols => '60' %></td>
   </tr>
@@ -69,11 +35,6 @@
   <tr>
     <td class="fieldName"><%= t 'user.account.preferred languages' %></td>
     <td><%= f.text_field :languages %></td>
-  </tr>
-
-  <tr>
-    <td class="fieldName"><%= t 'user.account.preferred editor' %></td>
-    <td><%= f.select :preferred_editor, [[t("editor.default", :name => t("editor.#{DEFAULT_EDITOR}.name")), 'default']] + Editors::ALL_EDITORS.collect { |e| [t("editor.#{e}.description"), e] } %></td>
   </tr>
 
   <tr>

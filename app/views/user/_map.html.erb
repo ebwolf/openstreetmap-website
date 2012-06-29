@@ -1,15 +1,15 @@
 <%
 if @user.home_lat.nil? or @user.home_lon.nil?
-  lon = h(params['lon'] || '0') 
-  lat = h(params['lat'] || '20') 
-  zoom = h(params['zoom'] || '1') 
+  lon = h(params['lon'] || '-98.871') 
+  lat = h(params['lat'] || '39') 
+  zoom = h(params['zoom'] || '3') 
 else 
   marker = true
   mlon = @user.home_lon 
   mlat = @user.home_lat
   lon =  @user.home_lon 
   lat =  @user.home_lat 
-  zoom =  '12'
+  zoom =  '11'
 end
 %>
 
@@ -48,28 +48,6 @@ end
     map.events.register("click", map, setHome);
     <% end %>
     
-    <% if show_other_users %>
-      <% friends = @user.friends.collect { |f| f.befriendee }.select { |f| !f.home_lat.nil? and !f.home_lon.nil? } %>
-      <% nearest = @user.nearby - friends %>
-
-      var near_icon = OpenLayers.Marker.defaultIcon();
-      near_icon.url = OpenLayers.Util.getImagesLocation() + "marker-green.png";
-      <% nearest.each do |u| %>
-        addMarkerToMap(new OpenLayers.LonLat(
-          <%= u.home_lon %>, <%= u.home_lat %>), near_icon.clone(),
-          '<%= escape_javascript(render(:partial => "popup", :object => u, :locals => { :type => "nearby mapper" })) %>'
-        );
-      <% end %>
-
-      var friend_icon = OpenLayers.Marker.defaultIcon();
-      friend_icon.url = OpenLayers.Util.getImagesLocation() + "marker-blue.png";
-      <% friends.each do |u| %>
-        addMarkerToMap(new OpenLayers.LonLat(
-          <%= u.home_lon %>, <%= u.home_lat %>), friend_icon.clone(),
-          '<%= escape_javascript(render(:partial => "popup", :object => u, :locals => { :type => "friend" })) %>'
-        );
-      <% end %>
-    <% end %>
   }        
 
   <% if setting_location %>
