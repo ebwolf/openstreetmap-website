@@ -4,15 +4,6 @@ var markers;
 var vectors;
 var popup;
 
-var nonamekeys = {
-   'openstreetmap.org': '2f59745a6b525b4ebdb100891d5b6711',
-   'www.openstreetmap.org': 'fd093e52f0965d46bb1c6c6281022199',
-   'openstreetmap.com': '4c60e7f5f31c576a9bb8da71c8d61152',
-   'www.openstreetmap.com': '142f25a0770a51a9a400b3513834a199',
-   'openstreetmap.net': '687c58fd1d715596bfc94abe653d8ac0',
-   'www.openstreetmap.net': '0bd1654141c85d30b9c2ccdb5302f2e4'
-};
-
 function createMap(divName, options) {
    options = options || {};
 
@@ -27,49 +18,40 @@ function createMap(divName, options) {
          new OpenLayers.Control.ScaleLine({geodesic: true})
       ],
       units: "m",
-      maxResolution: 156543.0339,
-      numZoomLevels: 20,
+      minZoomLevel: 4,
+      maxZoomLevel: 19,
+      numZoomLevels: 12,
+      maxExtent: new OpenLayers.Bounds(-126, 24, -58, 53),
+      displayOutsideMaxExtent: false,
+      wrapDateLine: false,
       displayProjection: new OpenLayers.Projection("EPSG:4326")
    });
 
    var mapnik = new OpenLayers.Layer.OSM.Mapnik(i18n("javascripts.map.base.mapnik"), {
       keyid: "mapnik",
-      displayOutsideMaxExtent: true,
-      wrapDateLine: true,
       layerCode: "M"
    });
    map.addLayer(mapnik);
 
    var osmarender = new OpenLayers.Layer.OSM.Osmarender(i18n("javascripts.map.base.osmarender"), {
       keyid: "osmarender",
-      displayOutsideMaxExtent: true,
-      wrapDateLine: true,
       layerCode: "O"
    });
    map.addLayer(osmarender);
 
    var cyclemap = new OpenLayers.Layer.OSM.CycleMap(i18n("javascripts.map.base.cycle_map"), {
       keyid: "cyclemap",
-      displayOutsideMaxExtent: true,
-      wrapDateLine: true,
       layerCode: "C"
    });
    map.addLayer(cyclemap);
 
-   var nonamekey = nonamekeys[document.domain];
-   var noname = new OpenLayers.Layer.OSM(i18n("javascripts.map.base.noname"), [
-      "http://a.tile.cloudmade.com/" + nonamekey + "/3/256/${z}/${x}/${y}.png",
-      "http://b.tile.cloudmade.com/" + nonamekey + "/3/256/${z}/${x}/${y}.png",
-      "http://c.tile.cloudmade.com/" + nonamekey + "/3/256/${z}/${x}/${y}.png"
-   ], {
-      displayOutsideMaxExtent: true,
-      wrapDateLine: true,
-      numZoomLevels: 19,
-      layerCode: "N"
+   var quadmap = new OpenLayers.Layer.OSM.Quads(i18n("javascripts.map.base.quad_index"), {
+      keyid: "quads",
+      layerCode: "Q"
    });
-   map.addLayer(noname);
+   map.addLayer(quadmap);
 
-   var numZoomLevels = Math.max(mapnik.numZoomLevels, osmarender.numZoomLevels);
+   var numZoomLevels = mapnik.numZoomLevels;
 
    markers = new OpenLayers.Layer.Markers("Markers", {
       displayInLayerSwitcher: false,
