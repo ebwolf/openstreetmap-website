@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="search-keywords" content="editing, add new feature" />
+ <meta name="generator" content="Adobe RoboHelp 9" />
+<title>Add a New Feature</title>
+<link rel="StyleSheet" href="../../../default.css" type="text/css" />
+<style type="text/css">
+<!--
+body { border-left-style:none;
+border-right-style:none;
+border-top-style:none;
+border-bottom-style:none; }
+-->
+</style>
+<script type="text/javascript" language="JavaScript">
+//<![CDATA[
+function ehlp_showtip(current,e,text)
+{
+  if ((parseInt(navigator.appVersion) == 4) && (navigator.appName == 'Netscape'))
+  {
+    document.tooltip.document.write("<layer bgColor='yellow' style='border:1px solid black;font-size:12px;'>"+ text + "</layer>");
+    document.tooltip.document.close();
+    document.tooltip.left=e.pageX+5;
+    document.tooltip.top=e.pageY+5;
+    document.tooltip.visibility="show";
+  }
+}
+function ehlp_hidetip()
+{
+  document.tooltip.visibility="hidden";
+}
+//]]>
+</script>
+<script type="text/javascript" language="JavaScript">
+//<![CDATA[
+function reDo() {
+  if (innerWidth != origWidth || innerHeight != origHeight)
+     location.reload();
+}
+if ((parseInt(navigator.appVersion) == 4) && (navigator.appName == "Netscape")) {
+	origWidth = innerWidth;
+	origHeight = innerHeight;
+	onresize = reDo;
+}
+onerror = null; 
+//]]>
+</script>
+<style type="text/css">
+<!--
+div.WebHelpPopupMenu { position:absolute;
+left:0px;
+top:0px;
+z-index:4;
+visibility:hidden; }
+-->
+</style>
+<script type="text/javascript" language="javascript1.2" src="../../../whmsg.js"></script>
+<script type="text/javascript" language="javascript" src="../../../whver.js"></script>
+<script type="text/javascript" language="javascript1.2" src="../../../whproxy.js"></script>
+<script type="text/javascript" language="javascript1.2" src="../../../whutils.js"></script>
+<script type="text/javascript" language="javascript1.2" src="../../../whlang.js"></script>
+<script type="text/javascript" language="javascript1.2" src="../../../whtopic.js"></script>
+
+</head>
+
+<body><script type="text/javascript" language="javascript1.2">//<![CDATA[
+<!--
+if (window.gbWhTopic)
+{
+	var strUrl = document.location.href;
+	var bc = 0;
+	var n = strUrl.toLowerCase().indexOf("bc-");
+	if(n != -1)
+	{
+		document.location.href = strUrl.substring(0, n);
+		bc = strUrl.substring(n+3);
+	}
+
+	if (window.addTocInfo)
+	{
+	addTocInfo("Editing\nHow to Edit Structure Features\nHow to Add a New Feature");
+addButton("show",BTN_TEXT,"Show","","","","",0,0,"","","");
+
+	}
+	if (window.writeBtnStyle)
+		writeBtnStyle();
+
+	if (window.writeIntopicBar)
+		writeIntopicBar(1);
+
+	
+	document.write("<p style=\"text-align:right\"> ");
+AddMasterBreadcrumbs("../../../index.htm", "", ">", "Home", "../../../User_Guide_for_Contributing_Structure_Data_to_The_National_Map.htm");
+document.write("<a href=\"../../Editing.htm\">Editing<\/a> > <a href=\"../EditingStructures.htm\">How to Edit Structure Features<\/a> > How to Add a New Feature<\/p>");
+
+
+	if (window.setRelStartPage)
+	{
+	setRelStartPage("../../../index.htm");
+
+		autoSync(1);
+		sendSyncInfo();
+		sendAveInfoOut();
+	}
+}
+else
+	if (window.gbIE4)
+		document.location.reload();
+
+//-->
+//]]></script>
+<h1>How to Add a New Feature</h1>
+<p style="font-weight: bold;">Overview</p>
+<p>&#160;</p>
+<p>To add a structure feature, add an icon to the map for each <span style="font-weight: bold;"><b>unique 
+ building use</b></span>, not an icon for each building.</p>
+<p>&#160;</p>
+<p style="margin-left: 40px;"><span style="font-weight: bold;"><b>Example:</b></span> 
+ &#160;<span style="font-weight: bold;"><b>One building</b></span> (city hall) 
+ <span style="font-weight: bold;"><b>with multiple uses</b></span> (police station, 
+ fire station, and city hall) is identified on the map by adding an icon 
+ for each unique use to the middle of the building.</p>
+<p style="margin-left: 40px;">&#160;</p>
+<p style="margin-left: 120px;"><img src="MultipleFeature.png" alt="MultipleFeature.png" style="border-left-width: 1px; 
+									 border-left-style: Solid; border-top-width: 1px; 
+									 border-top-style: Solid; border-right-width: 1px; 
+									 border-right-style: Solid; border-bottom-width: 1px; 
+									 border-bottom-style: Solid;" border="1" /></p>
+<p style="margin-left: 120px;">&#160;</p>
+<p style="margin-left: 0px; font-weight: bold;">&#160;</p>
+<p style="margin-left: 0px; font-weight: bold;">Steps for Adding New Structure 
+ Features</p>
+<p style="font-weight: bold;">&#160;</p>
+<p style="font-weight: bold; mso-add-space: auto; margin-left: 0px;">STEP 
+ 1: &#160;Find a Structure Feature to Add that is Not Already on the Map</p>
+<p style="font-weight: bold; mso-add-space: auto; margin-left: 40px;">&#160;</p>
+<ul type="disc">
+	<li style="font-weight: normal;"><p style="mso-add-space: auto; margin-left: 40px; 
+										 font-weight: normal;">See &quot;<a title="Resources" href="../../../Resources/Resources.htm" onmouseover="if ((parseInt(navigator.appVersion) == 4) && (navigator.appName == 'Netscape')) ehlp_showtip(this,event,'Resources');" onmouseout="if ((parseInt(navigator.appVersion) == 4) && (navigator.appName == 'Netscape')) ehlp_hidetip();">Resources</a>&quot; 
+	 and &quot;<a title="How to Research a Feature" href="../HowToResearchAFeature/How_to_Research_a_Feature.htm" onmouseover="if ((parseInt(navigator.appVersion) == 4) && (navigator.appName == 'Netscape')) ehlp_showtip(this,event,'How to Research a Feature');" onmouseout="if ((parseInt(navigator.appVersion) == 4) && (navigator.appName == 'Netscape')) ehlp_hidetip();">How 
+	 to Research a Feature</a>&quot; for tips on finding structure features 
+	 to map.</p></li>
+</ul>
+<p style="mso-add-space: auto; margin-left: 40px; font-weight: normal;">&#160;</p>
+<ul type="disc">
+	<li><p style="mso-add-space: auto; margin-left: 40px; font-weight: normal;">You 
+	 may need to <a title="zoom in" href="../EditAFeature/ZoomLevels.png" onmouseover="if ((parseInt(navigator.appVersion) == 4) && (navigator.appName == 'Netscape')) ehlp_showtip(this,event,'zoom in');" onmouseout="if ((parseInt(navigator.appVersion) == 4) && (navigator.appName == 'Netscape')) ehlp_hidetip();">zoom 
+	 in</a> to confirm that your feature is not already on the map. &#160;The 
+	 structure icons in the online editor may overlap with one another 
+	 if you are <a title="not zoomed in close enough" href="../EditAFeature/ZoomLevels.png" onmouseover="if ((parseInt(navigator.appVersion) == 4) && (navigator.appName == 'Netscape')) ehlp_showtip(this,event,'not zoomed in close enough');" onmouseout="if ((parseInt(navigator.appVersion) == 4) && (navigator.appName == 'Netscape')) ehlp_hidetip();">not 
+	 zoomed in close enough</a>. &#160;</p></li>
+</ul>
+<p style="mso-add-space: auto; margin-left: 40px; font-weight: normal;">&#160;</p>
+<p style="mso-add-space: auto; font-weight: bold; margin-left: 0px;">STEP 
+ 2: &#160;Place an Icon on the Map</p>
+<p style="mso-add-space: auto; margin-left: 40px; font-weight: normal;">&#160;</p>
+<ul type="disc">
+	<li><p style="mso-add-space: auto; margin-left: 40px; font-weight: normal;">Drag 
+	 the appropriate structure icon from the menu on the left to the structure’s 
+	 location on the aerial imagery.</p></li>
+</ul>
+<p style="mso-add-space: auto; margin-left: 40px; font-weight: normal;">&#160;</p>
+<ul type="disc">
+	<li><p style="mso-add-space: auto; margin-left: 40px; font-weight: normal;">Be 
+	 sure to <a title="zoom in" href="../EditAFeature/ZoomLevels.png" onmouseover="if ((parseInt(navigator.appVersion) == 4) && (navigator.appName == 'Netscape')) ehlp_showtip(this,event,'zoom in');" onmouseout="if ((parseInt(navigator.appVersion) == 4) && (navigator.appName == 'Netscape')) ehlp_hidetip();">zoom 
+	 in</a> close on a building before adding the structure icon to the 
+	 map. &#160;</p></li>
+</ul>
+<p style="mso-add-space: auto; margin-left: 40px; font-weight: normal;">&#160;</p>
+<p style="mso-add-space: auto; font-weight: bold; margin-left: 0px;">STEP 
+ 3: &#160;Enter Information About the Feature </p>
+<p style="mso-add-space: auto; margin-left: 40px; font-weight: bold;">&#160;</p>
+<ul type="disc">
+	<ul type="disc">
+		<li><p class="MsoNormal" style="margin-bottom: .0001pt; font-size: 12pt; 
+				 font-family: Arial, sans-serif;">While the icon is still 
+		 selected, <span style="font-weight: bold;"><b>enter the structure 
+		 feature's name</b></span> in the &quot;Name&quot; field on the &quot;Required&quot; 
+		 tab:</p></li>
+	</ul>
+</ul>
+<p class="MsoNormal" style="margin-bottom: .0001pt; font-size: 12pt; font-family: Arial, sans-serif;">&#160;</p>
+<p class="MsoNormal" style="margin-bottom: .0001pt; font-size: 12pt; font-family: Arial, sans-serif; 
+	 margin-left: 200px;"><img src="FireStationName.jpg" alt="FireStationName.jpg" style="border-left-width: 1px; 
+								 border-left-style: Solid; border-top-width: 1px; 
+								 border-top-style: Solid; border-right-width: 1px; 
+								 border-right-style: Solid; border-bottom-width: 1px; 
+								 border-bottom-style: Solid;" border="1" /></p>
+<p class="MsoNormal" style="margin-bottom: .0001pt; font-size: 12pt; font-family: Arial, sans-serif; 
+	 margin-left: 120px;">&#160;</p>
+<p class="MsoNormal" style="margin-bottom: .0001pt; font-size: 12pt; font-family: Arial, sans-serif; 
+	 margin-left: 120px;"><span style="font-weight: bold; font-style: italic;"><i><b>Note:</b></i></span> 
+ &#160;Please use the full proper name as it is found on an <a title="official website" href="../../../Resources/Website_Resources.htm" onmouseover="if ((parseInt(navigator.appVersion) == 4) && (navigator.appName == 'Netscape')) ehlp_showtip(this,event,'official website');" onmouseout="if ((parseInt(navigator.appVersion) == 4) && (navigator.appName == 'Netscape')) ehlp_hidetip();">official website</a>.<br 
+	 style="page-break-before: always;" />
+</p>
+<p class="MsoNormal" style="margin-bottom: .0001pt; font-size: 12pt; font-family: Arial, sans-serif; 
+	 margin-left: 120px;">&#160;</p>
+<ul type="disc">
+	<ul type="disc">
+		<li><p class="MsoNormal" style="margin-bottom: .0001pt; font-size: 12pt; 
+				 font-family: Arial, sans-serif;">You may also fill out 
+		 address information for the structure feature under the &quot;Optional&quot; 
+		 tab, but this information is not required:</p></li>
+	</ul>
+</ul>
+<p class="MsoNormal" style="margin-bottom: .0001pt; font-size: 12pt; font-family: Arial, sans-serif;">&#160;</p>
+<p class="MsoNormal" style="margin-bottom: .0001pt; font-size: 12pt; font-family: Arial, sans-serif; 
+	 margin-left: 200px;"><img src="FireStationAddress.jpg" alt="FireStationAddress.jpg" style="border-left-width: 1px; 
+								 border-left-style: Solid; border-top-width: 1px; 
+								 border-top-style: Solid; border-right-width: 1px; 
+								 border-right-style: Solid; border-bottom-width: 1px; 
+								 border-bottom-style: Solid;" border="1" /></p>
+<p class="MsoNormal" style="margin-bottom: .0001pt; font-size: 12pt; font-family: Arial, sans-serif;">&#160;</p>
+<ul type="disc">
+	<ul type="disc">
+		<li><p class="MsoNormal" style="line-height: 115%; mso-fareast-font-family: Calibri; 
+				 font-family: Arial, sans-serif; mso-bidi-font-family: 'Times New Roman'; 
+				 mso-ansi-language: EN-US; mso-fareast-language: EN-US; 
+				 mso-bidi-language: AR-SA;">When editing names and addresses 
+		 it is <span style="font-weight: bold;"><b>not acceptable</b></span> to 
+		 use <a title="general internet websites" href="../../../Resources/Websites_NOT_to_Use.htm" onmouseover="if ((parseInt(navigator.appVersion) == 4) && (navigator.appName == 'Netscape')) ehlp_showtip(this,event,'general internet websites');" onmouseout="if ((parseInt(navigator.appVersion) == 4) && (navigator.appName == 'Netscape')) ehlp_hidetip();">general 
+		 internet websites</a>. </p></li>
+	</ul>
+</ul>
+<p class="MsoNormal" style="line-height: 115%; mso-fareast-font-family: Calibri; 
+	 font-family: Arial, sans-serif; mso-bidi-font-family: 'Times New Roman'; 
+	 mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA; 
+	 margin-left: 120px;">&#160;</p>
+<ul type="disc">
+	<ul type="disc">
+		<li><p class="MsoNormal" style="font-weight: bold;">Acceptable 
+		 ways <span style="font-weight: normal;">to locate name and address 
+		 information include:</span></p></li>
+	</ul>
+</ul>
+<p>&#160;</p>
+<ul type="disc">
+	<ul type="disc">
+		<ul type="disc">
+			<li>Website of the feature (e.g., a school website, a city's 
+			 website of libraries, etc.).</li>
+		</ul>
+	</ul>
+</ul>
+<p>&#160;</p>
+<ul type="disc">
+	<ul type="disc">
+		<ul type="disc">
+			<li>Phone call to confirm the name and address of the feature.</li>
+		</ul>
+	</ul>
+</ul>
+<p>&#160;</p>
+<ul type="disc">
+	<ul type="disc">
+		<ul type="disc">
+			<li>Local knowledge (e.g., you already know the name of the 
+			 elementary school or library in your neighborhood).</li>
+		</ul>
+	</ul>
+</ul>
+<p>&#160;</p>
+<ul type="disc">
+	<ul type="disc">
+		<ul type="disc">
+			<li>Visual confirmation (e.g., in person or using online maps 
+			 with &quot;on-the-ground&quot; views of the street).<br style="page-break-before: always;" />
+			</li>
+		</ul>
+	</ul>
+</ul>
+<p class="MsoNormal" style="mso-ansi-language: EN-US; mso-fareast-language: EN-US;">&#160;</p>
+<p class="MsoNormal">&#160;</p>
+<p class="MsoNormal" style="font-weight: bold; margin-left: 0px;">STEP 
+ 4: &#160;Click the &quot;Finished Editing&quot; box under the &quot;Required&quot; 
+ tab</p>
+<p class="MsoNormal" style="margin-left: 40px; font-weight: bold;">&#160;</p>
+<ul type="disc">
+	<li><p class="MsoNormal" style="margin-left: 40px; font-weight: normal;">When 
+	 you are done adding the structure feature, click the &quot;Finished 
+	 Editing&quot; box located under the name of the feature:</p></li>
+</ul>
+<p class="MsoNormal" style="margin-left: 40px; font-weight: normal;">&#160;</p>
+<p class="MsoNormal" style="font-size: 12pt; font-family: Arial, sans-serif; 
+	 margin-left: 200px;"><img src="FinishedEditingArrow.jpg" alt="FinishedEditingArrow.jpg" style="border-left-width: 1px; 
+								 border-left-style: Solid; border-top-width: 1px; 
+								 border-top-style: Solid; border-right-width: 1px; 
+								 border-right-style: Solid; border-bottom-width: 1px; 
+								 border-bottom-style: Solid;" border="1" /></p>
+<p class="MsoNormal" style="margin-left: 40px; font-weight: normal;">&#160;</p>
+<p class="MsoNormal" style="margin-left: 40px; font-weight: normal;">&#160;</p>
+<ul type="disc">
+	<ul type="disc">
+		<li><p class="MsoNormal" style="margin-left: 0px;">THIS STEP IS 
+		 <span style="font-weight: bold; color: #ff0000;"><font color="red" ><b>VERY IMPORTANT</b></font></span>:</p></li>
+	</ul>
+</ul>
+<p class="MsoNormal" style="margin-left: 40px;">&#160;</p>
+<ul type="disc">
+	<ul type="disc">
+		<li><p class="MsoNormal" style="margin-left: 40px; font-weight: normal;">Click 
+		 the &quot;Finished Editing&quot; box if you looked at an existing 
+		 point and didn't change the feature's information (name, address, 
+		 or type of feature) because the information was correct.</p></li>
+	</ul>
+</ul>
+<p class="MsoNormal" style="margin-left: 40px;">&#160;</p>
+<ul type="disc">
+	<ul type="disc">
+		<li><p class="MsoNormal" style="margin-left: 40px; font-weight: normal;">Click 
+		 the &quot;Finished Editing&quot; box if you looked at an existing 
+		 point and made changes to the feature's information (name, address, 
+		 or type of feature).</p></li>
+	</ul>
+</ul>
+<p class="MsoNormal" style="margin-left: 40px; font-weight: normal;">&#160;</p>
+<ul type="disc">
+	<li><p class="MsoNormal" style="margin-left: 40px; font-weight: normal;"><span 
+	 style="font-weight: bold; font-style: italic;"><i><b>Note:</b></i></span> &#160;The 
+	 icon for the structure feature will now have a <a title="green outline" href="GreenBorder.jpg" onmouseover="if ((parseInt(navigator.appVersion) == 4) && (navigator.appName == 'Netscape')) ehlp_showtip(this,event,'green outline');" onmouseout="if ((parseInt(navigator.appVersion) == 4) && (navigator.appName == 'Netscape')) ehlp_hidetip();">green 
+	 outline</a>, &#160;which lets us know you have finished that point:<span 
+	 style="mso-spacerun: yes;">&#160;</span></p></li>
+</ul>
+<p class="MsoNormal" style="margin-left: 40px; font-weight: normal;">&#160;</p>
+<p class="MsoNormal" style="margin-left: 320px;"><img src="GreenBorder.jpg" alt="GreenBorder.jpg" style="border: Solid 1px #000000; 
+														 border-width: 1px; 
+														 border-style: solid;" border="1" />&#160;<br 
+	 style="page-break-before: always;" />
+</p>
+<p class="MsoNormal" style="margin-left: 40px; font-weight: normal;">&#160;</p>
+<p class="MsoNormal" style="margin-left: 0px;"><span style="font-weight: bold;"><b>STEP 
+ 5:</b></span> &#160;<span style="font-weight: bold;"><b>SAVE YOUR CHANGES!!</b></span></p>
+<p class="MsoNormal" style="margin-left: 40px; font-weight: normal;">&#160;</p>
+<ul type="disc">
+	<li style="margin-left: -20px;"><p class="MsoNormal" style="margin-left: 40px; 
+										 font-weight: normal;">Make sure 
+	 to save after finishing adding a structure feature!</p></li>
+</ul>
+<p class="MsoNormal" style="margin-left: 200px;">&#160;</p>
+<p class="MsoNormal" style="margin-left: 200px;"><img src="SaveButton.jpg" alt="SaveButton.jpg" style="border-left-width: 1px; 
+														 border-left-style: Solid; 
+														 border-top-width: 1px; 
+														 border-top-style: Solid; 
+														 border-right-width: 1px; 
+														 border-right-style: Solid; 
+														 border-bottom-width: 1px; 
+														 border-bottom-style: Solid;" border="1" /></p>
+<p style="margin-left: 0px; font-weight: bold;">&#160;</p>
+<p style="margin-left: 0px; font-weight: bold;">&#160;</p>
+<p style="margin-left: 0px; font-weight: bold;">More Help on How to Add 
+ a New Feature</p>
+<p style="margin-left: 0px; font-weight: bold;">&#160;</p>
+<p style="margin-left: 0px; font-weight: normal;">For a step-by-step example 
+ on how to add a new feature, see &quot;<a title="Example - Adding a New Feature" href="Add_a_New_Feature.htm" onmouseover="if ((parseInt(navigator.appVersion) == 4) && (navigator.appName == 'Netscape')) ehlp_showtip(this,event,'Example - Adding a New Feature');" onmouseout="if ((parseInt(navigator.appVersion) == 4) && (navigator.appName == 'Netscape')) ehlp_hidetip();">Example 
+ - Adding a New Feature</a>&quot;.</p>
+<p style="margin-left: 0px; font-weight: normal;">&#160;</p>
+<p style="margin-left: 0px; font-weight: normal;"><br style="page-break-before: always;" />
+</p>
+<script type="text/javascript" language="JavaScript">
+//<![CDATA[
+ if ((parseInt(navigator.appVersion) == 4) && (navigator.appName == 'Netscape'))
+  document.write("<div id='tooltip' class='WebHelpPopupMenu'></div>");
+//]]>
+</script><script type="text/javascript" language="javascript1.2">//<![CDATA[
+<!--
+if (window.writeIntopicBar)
+	writeIntopicBar(0);
+
+
+highlightSearch();
+//-->
+//]]></script>
+</body>
+</html>
