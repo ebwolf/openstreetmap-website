@@ -24,22 +24,6 @@
   <% end %>
 </div>
 
-<div id="area_edit_menu" class="menu">
-  <ul>
-    <% Editors::ALL_EDITORS.each do |editor| %>
-      <li><%= link_to t('layouts.edit_with', :editor => t("editor.#{editor}.description")), { :controller => :site, :action => :edit, :editor => editor }, { :id => "#{editor}_area_edit", :class => "geolink bbox" } %></li>
-    <% end %>
-  </ul>
-</div>
-
-<div id="object_edit_menu" class="menu">
-  <ul>
-    <% Editors::ALL_EDITORS.each do |editor| %>
-      <li><%= link_to t('layouts.edit_with', :editor => t("editor.#{editor}.description")), { :controller => :site, :action => :edit, :editor => editor }, { :id => "#{editor}_object_edit", :class => "geolink object" } %></li>
-    <% end %>
-  </ul>
-</div>
-
 <% if map.instance_of? Changeset or (map.instance_of? Node and map.version > 1) or map.visible %>
   <script type="text/javascript">
     OpenLayers.Lang.setCode("<%= I18n.locale.to_s %>");
@@ -150,9 +134,6 @@
           }
         });
       <% end %>
-
-      createMenu("area_edit", "area_edit_menu", 1000, "right");
-      createMenu("object_edit", "object_edit_menu", 1000, "right");
     }
 
     window.onload = init;
