@@ -1,24 +1,158 @@
-# Description
 
-This is the Rails port. The Ruby on Rails application that powers
-http://www.openstreetmap.org.
+****************************************************************************************************************************
+*                                                                                                                          *
+*  NOTE:                                                                                                                   *
+*  This is a list of items that are under version control and notes of what was done to each file                          *
+*  Currently all items are begin commited and pushed to Eric Wolf's GitHub git@github.com:ebwolf/openstreetmap-website.git *
+*                                                                                                                          *
+*  All items are in the file osmcp/openstreetmap-website and are seperated by main files,                                  *
+*  any other files named are in osmcp/openstreetmap-website/<TITLE_OF_SECTION>/extra_file                                  *
+*                                                                                                                          *
+*  For example                                                                                                             *
+*                                                                                                                          *
+*  ___________________________________________________                                                                     *
+*                                                                                                                          *
+*  TITLE                                                                                                                   *
+*                                                                                                                          *
+*  file /extra_file                                                                                                        *
+*                                                                                                                          *
+*     item_of_importance                                                                                                   *
+*                                                                                                                          *
+*                                                                                                                          *
+*                                                                                                                          *
+*                                                                                                                          *
+*  ___________________________________________________                                                                     *
+*                                                                                                                          *
+* The path of the item_of_importance is osmcp/openstreetmap-website/TITLE/extra_file/item_of_importance                    *
+****************************************************************************************************************************
 
-# Running it
 
-You can find documentation on how to setup and run the software on the
-OpenStreetMap wiki:
+___________________________________________________
 
-* http://wiki.openstreetmap.org/wiki/The_Rails_Port
+Rails app
+
+file /controllers 
+ 
+  user_controller.rb  - Removed OpenID stuff, cleaned up terms/considered PD, email address change
+
+file /models
+
+  user.rb - hard coded values for NEARBY_RADIUS and NEARBY_USERS
+
+___________________________________________________
+
+
+views
+
+file /browse/_map.html.erb  - Removed multiple editors drop-down
+
+
+file /layouts/site.html.erb  - Added USGS header/footer
+
+file /layouts/_head.html.erb  - Renamed OSM common.css to common_osm.css, changed meta tag, tried to kill off IE6.
+
+file /notifier/signup_confirm.text.plain.erb  - Removed referenes to OpenStreetMap stuff
+file /notifier/signup_confirm.text.html.erb
+
+file /site/index.html.erb - Removed attribution box, changed default location, 
+
+file /user/terms.html.erb - Removed user terms/legalese stuff
+
+file /user/account.html.erb - Removed openid stuff
+file /user/login.html.erb
+file /user/_map.html.erb
+file /user/new.html.erb
+
+file /user/suspended.html.erb - changed mailto: for suspended accounts
+
+___________________________________________________
+
+config 
+
+file 
+
+  openlayers.cfg - stripped out unnecessary language support.
+  languages.yml 
+
+  application.yml - Multiple items changed.
+
+file /locales 
+  en.yml  - Too many changes to note.cd locales
+  en_bu.yml (new) - Not sure why this exists or is necessary but it is!
+
+file /enviroments
+
+  development.rb  - OSMCP runs in "development" mode all the time. This sets the paramters like "production" mode.
+
+file /legales
+  US.yml - New - copied from GB.yml. Probably needs to be reviewed.
+
+___________________________________________________________
+
+public
+
+file 
+
+  favicon.ico -> Changed to USGS favicon.ico
+
+  500.html - Changed to USGS look/feel
+  403.html
+  404.html
+
+  *vgistructures_userguide.html - Ignore this and Webhelp
+
+  google*.html - Need to remove from production server
+
+
+file /$files
+
+  $files =
+
+  {
     
-# Hacking it
+    potlatch2 - Main instance of Potlatch2 editor
+    p2ks - Kansas version of Potlatch2 editor
+    p2aaq - Adopt-a-Quad version of Potlatch2 editor
 
-The canonnical Git repository for this software is hosted at
-git.openstreetmap.org:
 
-* http://git.openstreetmap.org/?p=rails.git
-    
-See commiting to the rails port on the wiki for getting your patches
-integrated:
+       
 
-* http://wiki.openstreetmap.org/wiki/Committing_to_the_rails_port
+	file /potlatch2/map_features.xml
+	file /potlatch2/imagery.xml
+	file /potlatch2/potlatch2.swf
+	file /potlatch2/usgs_style.css *new
+	file /potlatch2/stylesheets.xml
+
+	file /potlatch2/usgs/* - all new!
+
+	Do the same for p2ks and p2aaq
+
+    includes - Part of standard USGS website design. Keep in version control.
+
+  }
+
+file /images
+
+  usgs_logo.jpg
+  tnm_corps_half.jpg
+  tnm_corps.jpg
+  ngtoc_internal_banner.jpg
+  tnm_web_banner.jpg
+  36_tall_banner.jpg
+
+file /stylesheets
+
+    common.css - Parts of USGS standard header/footer stylesheet
+    ngtoc.css
+    button_back.jpg
+    title_back2.jpg
+    ie.css
+    custom.css
+    large.css
+
+    common_osm.css - was OSMs common.css. Renamed to work with USGS common.css
+
+file /openlayers/OpenStreetMap.js - Tweaking OpenLayers for our application
+file /openlayers/OpenLayers.js
+file /javascripts/map.js
 
